@@ -48,6 +48,7 @@ class StudentTaskManager:
                 return True
 
         return False
+    # Deletes a task only when its identifier is valid.
     def delete_task(self, task_id):
         if not isinstance(task_id, int) or task_id < 1:
             return False
