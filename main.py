@@ -36,7 +36,7 @@ class StudentTaskManager:
         for task in self.tasks:
             status = "Completed" if task["completed"] else "Pending"
             print(f'{task["id"]}. {task["title"]} - {status}')
-
+# Marks an existing task as completed only once.
     def complete_task(self, task_id):
         for task in self.tasks:
             if task["id"] == task_id:
