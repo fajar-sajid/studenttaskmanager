@@ -1,4 +1,4 @@
-# studenttaskmanager
+
 # Student Task Manager
 
 A Python console application for managing student tasks.
