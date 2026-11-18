@@ -32,8 +32,10 @@ class StudentTaskManager:
             if task["id"] == task_id:
                 if task["completed"]:
                     return False
+
                 task["completed"] = True
                 return True
+
         return False
 
     def delete_task(self, task_id):
@@ -44,6 +46,7 @@ class StudentTaskManager:
             if task["id"] == task_id:
                 self.tasks.remove(task)
                 return True
+
         return False
 
 
