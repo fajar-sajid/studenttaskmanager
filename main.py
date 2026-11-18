@@ -18,16 +18,6 @@ class StudentTaskManager:
         self.next_id += 1
         return task
 
-        task = {
-            "id": self.next_id,
-            "title": title.strip(),
-            "completed": False
-        }
-
-        self.tasks.append(task)
-        self.next_id += 1
-        return task
-
     def display_tasks(self):
         if not self.tasks:
             print("No tasks available.")
@@ -40,11 +30,16 @@ class StudentTaskManager:
     def complete_task(self, task_id):
         for task in self.tasks:
             if task["id"] == task_id:
+                if task["completed"]:
+                    return False
                 task["completed"] = True
                 return True
         return False
 
     def delete_task(self, task_id):
+        if not isinstance(task_id, int) or task_id < 1:
+            return False
+
         for task in self.tasks:
             if task["id"] == task_id:
                 self.tasks.remove(task)
@@ -76,11 +71,19 @@ def main():
 
             elif choice == "3":
                 task_id = int(input("Enter task ID: "))
-                print("Completed!" if manager.complete_task(task_id) else "Invalid ID")
+                print(
+                    "Completed!"
+                    if manager.complete_task(task_id)
+                    else "Invalid ID or already completed."
+                )
 
             elif choice == "4":
                 task_id = int(input("Enter task ID: "))
-                print("Deleted!" if manager.delete_task(task_id) else "Invalid ID")
+                print(
+                    "Deleted!"
+                    if manager.delete_task(task_id)
+                    else "Invalid ID"
+                )
 
             elif choice == "5":
                 print("Goodbye!")
